@@ -10,7 +10,7 @@ import os
 
 analyzer = SymptomAnalyzer()
 
-def get_logo_base64(logo_path: str = "/content/logo.png") -> str:
+def get_logo_base64(logo_path: str = "logo.png") -> str:
     """Return base64 data URL for logo if exists, else empty string."""
     if os.path.exists(logo_path):
         with open(logo_path, "rb") as f:
@@ -196,4 +196,9 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css) as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(share=True, server_name="0.0.0.0", server_port=7860)
+    port = int(os.getenv("PORT", "7860"))
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=port,
+        share=False
+    )
