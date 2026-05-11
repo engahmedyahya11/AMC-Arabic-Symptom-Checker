@@ -1,114 +1,41 @@
-# 🏥 AMC Hospital - Arabic Medical Symptom Checker
+# AMC Arabic Symptom Checker
 
-A production-ready bilingual (Arabic/English) symptom analysis application built for **Aseel Medical Care Hospital (AMC)**, Red Sea, Egypt.
+Arabic medical symptom checker using Python and Gradio.  
+The app helps users enter their symptoms in Arabic and get a list of possible specialties to visit.
 
-## 🌟 Features
+## Features
 
-- **Bilingual Support:** Full Arabic and English interface with RTL support
-- **15+ Medical Specialties:** Comprehensive coverage of all AMC departments
-- **AI-Powered Analysis:** TF-IDF embeddings with cosine similarity matching
-- **Urgency Detection:** Automated red flag keyword detection
-- **AMC Branding:** Custom theme with hospital colors and information
-- **24/7 Emergency Integration:** Direct contact information included
+- Arabic text input for symptoms
+- Simple UI built with Gradio
+- Suggests medical specialties based on the described symptoms
 
-## 🏗️ Technical Stack
+## Run locally
 
-- **Framework:** Gradio 4.0+
-- **NLP:** Scikit-learn TF-IDF, LangDetect
-- **Deployment:** Hugging Face Spaces
-- **Language Models:** Rule-based + embedding similarity (no API costs)
+1. Clone the repository:
 
-## 📁 Project Structure
+   ```bash
+   git clone https://github.com/engahmedyahya11/AMC-Arabic-Symptom-Checker.git
+   cd AMC-Arabic-Symptom-Checker
+   ```
 
-amc-symptom-checker/
-├── app.py              # Main Gradio application
-├── model.py            # Symptom analysis engine
-├── specialties.py      # Medical specialty database
-├── requirements.txt    # Python dependencies
-└── README.md          # Documentation
+2. Install dependencies:
 
-## 🚀 Local Testing in Colab
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-%cd /content/drive/MyDrive/amc-symptom-checker
-!python app.py
+3. Run the app:
 
-## 🌐 Deployment to Hugging Face Spaces
+   ```bash
+   python app.py
+   ```
 
-### Method 1: Using Colab (Recommended)
+4. Open the Gradio link shown in the terminal in your browser.
 
-from huggingface_hub import HfApi, create_repo, login
+## Files
 
-# Login to Hugging Face
-login(token="YOUR_HF_TOKEN_HERE")
-
-# Create Space
-api = HfApi()
-repo_id = "YOUR_USERNAME/amc-symptom-checker"
-
-try:
-    create_repo(repo_id=repo_id, repo_type="space", space_sdk="gradio")
-except:
-    print("Repo already exists")
-
-# Upload files
-files_to_upload = ['app.py', 'model.py', 'specialties.py', 'requirements.txt', 'README.md']
-project_dir = '/content/drive/MyDrive/amc-symptom-checker'
-
-for file in files_to_upload:
-    api.upload_file(
-        path_or_fileobj=f"{project_dir}/{file}",
-        path_in_repo=file,
-        repo_id=repo_id,
-        repo_type="space"
-    )
-    print(f"✅ Uploaded {file}")
-
-print(f"🎉 Visit: https://huggingface.co/spaces/{repo_id}")
-
-### Method 2: Manual Upload
-
-1. Go to [Hugging Face Spaces](https://huggingface.co/new-space)
-2. Create new Space with **Gradio SDK**
-3. Upload all 5 files from Google Drive
-4. Space will auto-deploy
-
-## 🏥 AMC Hospital Information
-
-**Aseel Medical Care Hospital (AMC)**
-- 📍 Address: 9 El Kamar District, El Hadaba, Hurghada, Red Sea, Egypt
-- 📞 Emergency 24/7: +20 65 344 1110
-- 🌐 Website: [www.amc-redsea.com](https://www.amc-redsea.com)
-- ✅ JCI Accredited | Established 2010
-- 🛏️ 25 beds | Specialized in Orthopedics, Cardiology, Emergency Care
-
-## 📊 Supported Specialties
-
-1. Orthopedics (جراحة العظام)
-2. Cardiology (أمراض القلب)
-3. Emergency Medicine (الطوارئ)
-4. General Surgery (الجراحة العامة)
-5. Intensive Care (العناية المركزة)
-6. Internal Medicine (الباطنة)
-7. Pediatrics (طب الأطفال)
-8. Women's Health (صحة المرأة)
-9. Neurology (المخ والأعصاب)
-10. Urology (المسالك البولية)
-11. ENT (الأنف والأذن والحنجرة)
-12. Dermatology (الأمراض الجلدية)
-13. Ophthalmology (طب العيون)
-14. Dentistry (طب الأسنان)
-15. Radiology (الأشعة التشخيصية)
-16. Laboratory (المختبر الطبي)
-
-## ⚕️ Medical Disclaimer
-
-This system is a diagnostic **assistant only** and not a substitute for direct medical consultation. All results are indicative and do not constitute a final medical diagnosis.
-
-## 👨‍💻 Developer
-
-Built by Ahmed Yahya for AMC Hospital
-Portfolio-ready code with production standards
-
-## 📄 License
-
-Proprietary - AMC Hospital © 2026
+- `app.py`: Gradio interface and main app logic
+- `model.py`: functions for processing symptoms and predicting specialties
+- `specialties.py`: list/mapping of medical specialties in Arabic
+- `requirements.txt`: Python dependencies
+- `logo.png`: app logo
