@@ -32,7 +32,7 @@ The app helps users enter their symptoms in Arabic and get a list of possible sp
 
 4. Open the Gradio link shown in the terminal in your browser.
 
-## Files
+## Files"link "https://amc-arabic-symptom-checker.onrender.com/""
 
 - `app.py`: Gradio interface and main app logic
 - `model.py`: functions for processing symptoms and predicting specialties
